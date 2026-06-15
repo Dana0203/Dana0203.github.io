@@ -3,25 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dana | Seoul National University Student</title>
+  <meta name="description" content="Personal website of Dana, a Seoul National University student in Animal Biotechnology and Artificial Intelligence." />
+  <title>Dana | Seoul National University</title>
   <style>
     :root {
-      --bg: #f7f3ea;
-      --surface: #fffaf0;
-      --ink: #1f2933;
-      --muted: #5f6b7a;
-      --line: #e3dac8;
-      --accent: #2f6f73;
-      --accent-dark: #17484b;
-      --accent-soft: #d9ece8;
-      --shadow: 0 18px 45px rgba(31, 41, 51, 0.08);
-      --radius: 24px;
+      --bg: #f7f4ef;
+      --surface: #ffffff;
+      --ink: #1e2430;
+      --muted: #667085;
+      --line: #e6dfd4;
+      --accent: #5067eb;
+      --accent-dark: #3142b8;
+      --accent-soft: #eef1ff;
+      --green: #1d7f5f;
+      --shadow: 0 18px 50px rgba(31, 35, 53, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max-width: 1120px;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
@@ -29,10 +32,13 @@
     }
 
     body {
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #e8f3ef 0, transparent 32rem), var(--bg);
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
-      line-height: 1.65;
+      background:
+        radial-gradient(circle at top left, rgba(80, 103, 235, 0.14), transparent 34rem),
+        linear-gradient(180deg, #fffaf4 0%, var(--bg) 45%, #f3f6ff 100%);
+      line-height: 1.6;
     }
 
     a {
@@ -40,224 +46,347 @@
       text-decoration: none;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      z-index: 99;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
     header {
       position: sticky;
       top: 0;
       z-index: 10;
+      border-bottom: 1px solid rgba(230, 223, 212, 0.8);
+      background: rgba(247, 244, 239, 0.86);
       backdrop-filter: blur(18px);
-      background: rgba(247, 243, 234, 0.84);
-      border-bottom: 1px solid rgba(227, 218, 200, 0.8);
     }
 
-    .nav {
-      max-width: 1100px;
+    .nav-wrap {
+      max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1rem 1.25rem;
+      padding: 0.9rem 1.2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
     }
 
-    .logo {
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
       font-weight: 800;
       letter-spacing: -0.03em;
-      color: var(--accent-dark);
     }
 
-    .nav-links {
+    .brand-mark {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--green));
+      box-shadow: 0 10px 22px rgba(80, 103, 235, 0.22);
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
       display: flex;
+      align-items: center;
+      gap: 0.25rem;
       flex-wrap: wrap;
-      gap: 0.9rem;
-      font-size: 0.95rem;
-      color: var(--muted);
+      justify-content: flex-end;
     }
 
-    .nav-links a {
-      padding: 0.35rem 0.5rem;
+    nav a {
+      display: inline-flex;
+      padding: 0.55rem 0.8rem;
       border-radius: 999px;
+      color: #404858;
+      font-size: 0.94rem;
+      font-weight: 650;
     }
 
-    .nav-links a:hover,
-    .nav-links a:focus {
-      background: var(--accent-soft);
+    nav a:hover,
+    nav a:focus-visible {
       color: var(--accent-dark);
+      background: var(--accent-soft);
       outline: none;
     }
 
     main {
-      max-width: 1100px;
+      max-width: var(--max-width);
       margin: 0 auto;
-      padding: 3rem 1.25rem 5rem;
+      padding: 4.25rem 1.2rem 5rem;
+    }
+
+    section {
+      scroll-margin-top: 6rem;
     }
 
     .hero {
-      min-height: 68vh;
       display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      align-items: center;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.7fr);
       gap: 2rem;
+      align-items: center;
+      min-height: calc(100vh - 82px);
+      padding: 1rem 0 4rem;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.8rem;
-      border: 1px solid var(--line);
+      gap: 0.45rem;
+      padding: 0.38rem 0.75rem;
+      border: 1px solid rgba(80, 103, 235, 0.2);
       border-radius: 999px;
-      background: rgba(255, 250, 240, 0.75);
       color: var(--accent-dark);
-      font-weight: 700;
+      background: rgba(238, 241, 255, 0.85);
+      font-weight: 750;
       font-size: 0.9rem;
-      margin-bottom: 1.2rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: -0.045em;
     }
 
     h1 {
-      font-size: clamp(3rem, 8vw, 6.8rem);
-      line-height: 0.92;
-      letter-spacing: -0.08em;
-      color: var(--accent-dark);
-      margin-bottom: 1.4rem;
+      margin-top: 1rem;
+      font-size: clamp(3rem, 9vw, 6.6rem);
     }
 
-    .hero p {
-      max-width: 620px;
-      color: var(--muted);
-      font-size: 1.15rem;
+    .hero-subtitle {
+      margin: 1.1rem 0 0;
+      max-width: 680px;
+      color: #3f4756;
+      font-size: clamp(1.1rem, 2vw, 1.38rem);
     }
 
-    .hero-actions {
+    .hero-details {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 2rem;
+      gap: 0.75rem;
+      margin: 1.5rem 0 0;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.58rem 0.82rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: #465064;
+      font-weight: 650;
+      font-size: 0.94rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin: 1.85rem 0 0;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
-      padding: 0.75rem 1rem;
+      gap: 0.5rem;
+      min-height: 48px;
+      padding: 0.8rem 1.05rem;
+      border: 1px solid transparent;
       border-radius: 999px;
-      font-weight: 700;
-      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 14px 28px rgba(80, 103, 235, 0.28);
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
     }
 
-    .button.primary {
-      background: var(--accent);
-      color: white;
-      box-shadow: 0 12px 22px rgba(47, 111, 115, 0.2);
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      background: var(--accent-dark);
+      box-shadow: 0 18px 36px rgba(80, 103, 235, 0.34);
+      outline: none;
     }
 
     .button.secondary {
-      background: transparent;
-      color: var(--accent-dark);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.78);
+      border-color: var(--line);
+      box-shadow: none;
+    }
+
+    .button.secondary:hover,
+    .button.secondary:focus-visible {
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(31, 35, 53, 0.1);
     }
 
     .profile-card {
-      background: linear-gradient(160deg, rgba(255, 250, 240, 0.95), rgba(217, 236, 232, 0.72));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+      position: relative;
+      padding: 1rem;
+      border: 1px solid rgba(230, 223, 212, 0.95);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.76);
       box-shadow: var(--shadow);
-      padding: 1.5rem;
-      transform: rotate(1.5deg);
+      overflow: hidden;
     }
 
-    .avatar {
-      width: min(100%, 280px);
-      aspect-ratio: 1;
-      margin: 0 auto 1.25rem;
-      border-radius: 50%;
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(80, 103, 235, 0.16), transparent 45%),
+        radial-gradient(circle at 92% 12%, rgba(29, 127, 95, 0.18), transparent 13rem);
+      pointer-events: none;
+    }
+
+    .profile-media {
+      position: relative;
+      overflow: hidden;
+      border-radius: calc(var(--radius-xl) - 8px);
+      aspect-ratio: 4 / 5;
+      background: var(--accent-soft);
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-caption {
+      position: relative;
       display: grid;
-      place-items: center;
-      background: radial-gradient(circle at 30% 30%, #ffffff, #b7d8d0 40%, #2f6f73 100%);
-      color: white;
-      font-size: 7rem;
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      border: 10px solid rgba(255, 255, 255, 0.7);
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding: 0.9rem 0.95rem 0.95rem;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.8);
     }
 
-    .profile-card h2 {
-      color: var(--accent-dark);
-      font-size: 1.4rem;
-      margin-bottom: 0.2rem;
+    .profile-caption strong {
+      font-size: 1.05rem;
     }
 
-    .profile-card p {
+    .profile-caption span {
       color: var(--muted);
-      font-size: 0.98rem;
+      font-size: 0.95rem;
     }
 
-    section {
-      padding: 4.5rem 0 0;
+    .section-head {
+      display: grid;
+      gap: 0.55rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .section-label {
+      color: var(--accent-dark);
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
     }
 
     .section-title {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.4rem;
+      font-size: clamp(2rem, 4.2vw, 3.35rem);
     }
 
-    .section-title span {
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 0.9rem;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.05;
-      letter-spacing: -0.055em;
-      color: var(--accent-dark);
+    .section-intro {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.04rem;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
     }
 
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     .card {
-      background: rgba(255, 250, 240, 0.88);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.35rem;
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(230, 223, 212, 0.95);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 10px 32px rgba(31, 35, 53, 0.07);
+    }
+
+    .card-inner {
+      padding: 1.25rem;
     }
 
     .card h3 {
-      color: var(--accent-dark);
       margin-bottom: 0.55rem;
       font-size: 1.15rem;
+      letter-spacing: -0.025em;
     }
 
-    .card p,
-    .card li {
+    .card p {
+      margin: 0;
       color: var(--muted);
     }
 
-    ul {
-      list-style-position: inside;
+    .divider-section {
+      margin-top: 4.4rem;
     }
 
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-top: 1rem;
+    .list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.72rem;
     }
 
-    .tag {
-      border-radius: 999px;
-      padding: 0.4rem 0.7rem;
-      background: var(--accent-soft);
-      color: var(--accent-dark);
-      font-size: 0.9rem;
-      font-weight: 700;
+    .list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.7rem;
+      align-items: start;
+      color: #475166;
+    }
+
+    .dot {
+      width: 0.62rem;
+      height: 0.62rem;
+      margin-top: 0.48rem;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(80, 103, 235, 0.12);
     }
 
     .timeline {
@@ -265,206 +394,461 @@
       gap: 1rem;
     }
 
-    .wide {
-      grid-column: 1 / -1;
+    .timeline-item {
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: #fbfaf8;
+      border: 1px solid var(--line);
     }
 
-    .contact-list {
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .contact-list a,
-    .contact-list span {
-      display: inline-flex;
-      width: fit-content;
-      border-bottom: 1px solid var(--accent);
+    .timeline-item .meta {
       color: var(--accent-dark);
+      font-size: 0.9rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.95rem;
+    }
+
+    .tag {
+      padding: 0.45rem 0.62rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #3542a4;
+      font-size: 0.86rem;
+      font-weight: 750;
+    }
+
+    .project-card {
+      display: grid;
+      gap: 1rem;
+      min-height: 100%;
+    }
+
+    .project-number {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--green));
+      font-weight: 900;
+    }
+
+    .cv-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .cv-preview {
+      min-height: 560px;
+      overflow: hidden;
+    }
+
+    .cv-preview iframe {
+      width: 100%;
+      min-height: 560px;
+      border: 0;
+      background: #fff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: grid;
+      gap: 0.35rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.78);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .contact-link:hover,
+    .contact-link:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(31, 35, 53, 0.1);
+      outline: none;
+    }
+
+    .contact-link span {
+      color: var(--muted);
+      font-size: 0.92rem;
       font-weight: 700;
     }
 
-    footer {
-      padding: 2.5rem 1.25rem;
-      border-top: 1px solid var(--line);
-      text-align: center;
-      color: var(--muted);
-      background: rgba(255, 250, 240, 0.45);
+    .contact-link strong {
+      overflow-wrap: anywhere;
     }
 
-    @media (max-width: 800px) {
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-      }
+    .ai-box {
+      display: grid;
+      gap: 0.85rem;
+      padding: 1.25rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(80, 103, 235, 0.18);
+      background: linear-gradient(135deg, rgba(238, 241, 255, 0.9), rgba(255, 255, 255, 0.8));
+    }
 
+    .prompt-box {
+      margin: 0;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(80, 103, 235, 0.2);
+      color: #3e4658;
+      font-size: 0.95rem;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      padding: 2.2rem 1.2rem 3rem;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid rgba(230, 223, 212, 0.85);
+      background: rgba(255, 255, 255, 0.42);
+    }
+
+    @media (max-width: 920px) {
       .hero,
-      .grid {
+      .cv-layout,
+      .grid.two,
+      .grid.three,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
       .hero {
         min-height: auto;
-        padding-top: 2rem;
       }
 
       .profile-card {
-        transform: none;
+        max-width: 480px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-wrap {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav ul {
+        justify-content: flex-start;
+      }
+
+      nav a {
+        padding: 0.5rem 0.65rem;
+        font-size: 0.9rem;
+      }
+
+      main {
+        padding-top: 2.4rem;
+      }
+
+      .hero {
+        padding-bottom: 2.8rem;
+      }
+
+      .cv-preview,
+      .cv-preview iframe {
+        min-height: 430px;
       }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#top" class="logo">Dana</a>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#resume">Resume</a>
-        <a href="#projects">Projects</a>
-        <a href="#courses">Courses</a>
-        <a href="#contact">Contact</a>
-        <a href="#ai-usage">AI Usage</a>
-      </div>
-    </nav>
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="Dana home">
+        <span class="brand-mark">D</span>
+        <span>Dana</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#resume">CV</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#ai-usage">AI Usage</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main id="top">
-    <section class="hero" aria-label="Introduction">
+  <main id="main">
+    <section class="hero" id="top" aria-label="Introduction">
       <div>
-        <div class="eyebrow">Seoul National University Student</div>
-        <h1>Hello, I’m Dana.</h1>
-        <p>
-          I am a student at Seoul National University. I am interested in learning, technology,
-          and building creative projects. This website is my personal GitHub Pages homepage.
+        <span class="eyebrow">Seoul National University Student</span>
+        <h1>Dana</h1>
+        <p class="hero-subtitle">
+          I am a student in the Department of Animal Biotechnology &amp; Artificial Intelligence at Seoul National University.
+          My academic focus connects life science, animal biotechnology, data-driven thinking, and practical AI tools.
         </p>
-        <div class="hero-actions">
-          <a class="button primary" href="#projects">View Projects</a>
-          <a class="button secondary" href="#contact">Contact Me</a>
+        <div class="hero-details" aria-label="Key details">
+          <span class="pill">Department of Animal Biotechnology &amp; Artificial Intelligence</span>
+          <span class="pill">Expected Graduation: February 2027</span>
+          <span class="pill">GitHub Pages Portfolio</span>
+        </div>
+        <div class="cta-row">
+          <a class="button" href="#resume">View Resume</a>
+          <a class="button secondary" href="assets/cv.pdf" target="_blank" rel="noopener noreferrer">Open CV PDF</a>
+          <a class="button secondary" href="#contact">Contact</a>
         </div>
       </div>
 
-      <aside class="profile-card" aria-label="Profile summary">
-        <div class="avatar" aria-label="Avatar with the letter D">D</div>
-        <h2>Dana</h2>
-        <p>Seoul National University</p>
-        <p>Major: Department of Animal Biotechnology & Artificial Intelligence</p>
+      <aside class="profile-card" aria-label="Profile photo and summary">
+        <div class="profile-media">
+          <img class="profile-photo" src="assets/profile.png" alt="Profile photo of Dana" />
+        </div>
+        <div class="profile-caption">
+          <strong>Dana</strong>
+          <span>Animal Biotechnology &amp; Artificial Intelligence, SNU</span>
+        </div>
       </aside>
     </section>
 
-    <section id="about">
-      <div class="section-title">
-        <span>01</span>
-        <h2>About Me</h2>
+    <section id="about" class="divider-section">
+      <div class="section-head">
+        <span class="section-label">About Me</span>
+        <h2 class="section-title">Interdisciplinary learning across biotechnology and AI.</h2>
+        <p class="section-intro">
+          I am building a personal academic portfolio that brings together my interests in animal biotechnology,
+          biological data, artificial intelligence, and clear scientific communication. This website presents my background,
+          projects, planned courses, CV, and contact information in one accessible place.
+        </p>
       </div>
-      <div class="grid">
-        <article class="card wide">
-          <h3>Personal Introduction</h3>
-          <p>
-            My name is Dana, and I am studying at Seoul National University. I enjoy exploring new ideas,
-            improving my problem-solving skills, and learning how digital tools can help people communicate
-            and create. Replace this paragraph with a more personal introduction when you are ready.
-          </p>
-        </article>
-      </div>
-    </section>
 
-    <section id="resume">
-      <div class="section-title">
-        <span>02</span>
-        <h2>CV / Resume</h2>
-      </div>
-      <div class="grid">
+      <div class="grid three">
         <article class="card">
-          <h3>Education</h3>
-          <p><strong>Seoul National University</strong></p>
-          <p>Major: add your major here</p>
-          <p>Expected graduation: add year here</p>
-        </article>
-        <article class="card">
-          <h3>Skills</h3>
-          <div class="tag-list" aria-label="Skills list">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">Python</span>
-            <span class="tag">GitHub Pages</span>
-            <span class="tag">Communication</span>
-            <span class="tag">Problem Solving</span>
+          <div class="card-inner">
+            <h3>University</h3>
+            <p>Seoul National University</p>
           </div>
         </article>
-        <article class="card wide">
-          <h3>Experience</h3>
-          <p>
-            
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="section-title">
-        <span>03</span>
-        <h2>Activities & Projects</h2>
-      </div>
-      <div class="grid">
         <article class="card">
-          <h3>GitHub Pages Personal Website</h3>
-          <p>
-            Built a responsive static website and deployed it through GitHub Pages as part of a course activity.
-          </p>
+          <div class="card-inner">
+            <h3>Department</h3>
+            <p>Department of Animal Biotechnology &amp; Artificial Intelligence</p>
+          </div>
         </article>
         <article class="card">
-          <h3>HTML/CSS Learning Project</h3>
-          <p>
-            Practiced basic web structure, visual design, navigation, and responsive layout using only front-end code.
-          </p>
-        </article>
-        <article class="card wide">
-          <h3>More Activities</h3>
-          <p>
-            Add your club activities, competitions, research interests, volunteer work, or personal projects here.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="section-title">
-        <span>05</span>
-        <h2>Contact</h2>
-      </div>
-      <div class="grid">
-        <article class="card wide">
-          <h3>Get in Touch</h3>
-          <div class="contact-list">
-            <span>Email: elle203@snu.ac.kr</span>
-            <a href="https://github.com/Dana0203" target="_blank" rel="noopener">GitHub: github.com/Dana0203</a>
-            <span>Other link: add LinkedIn, Instagram, or portfolio link if you want</span>
+          <div class="card-inner">
+            <h3>Expected Graduation</h3>
+            <p>February 2027</p>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="ai-usage">
-      <div class="section-title">
-        <span>06</span>
-        <h2>AI Usage</h2>
+    <section id="resume" class="divider-section">
+      <div class="section-head">
+        <span class="section-label">CV / Resume</span>
+        <h2 class="section-title">Education, skills, and downloadable CV.</h2>
+        <p class="section-intro">
+          The CV section summarizes my academic profile and directly links the PDF file stored at <strong>assets/cv.pdf</strong>.
+        </p>
       </div>
-      <div class="grid">
-        <article class="card wide">
-          <h3>How AI Helped</h3>
-          <p><strong>Tool:</strong> ChatGPT</p>
-          <p>
-            <strong>Prompt:</strong> Create a simple responsive GitHub Pages personal website for a Seoul National
-            University student. Include an introduction, avatar, contact information, CV/resume section, projects,
-            planned courses, navigation menu, and AI usage section. Do not use a backend or paid external API.
-          </p>
+
+      <div class="cv-layout">
+        <div class="grid">
+          <article class="card">
+            <div class="card-inner">
+              <h3>Education</h3>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="meta">Seoul National University</div>
+                  <strong>Department of Animal Biotechnology &amp; Artificial Intelligence</strong>
+                  <p>Expected Graduation: February 2027</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-inner">
+              <h3>Skills</h3>
+              <ul class="list">
+                <li><span class="dot"></span><span>Animal biotechnology foundations and interdisciplinary scientific thinking</span></li>
+                <li><span class="dot"></span><span>Artificial intelligence literacy and data-driven problem solving</span></li>
+                <li><span class="dot"></span><span>HTML, CSS, GitHub, GitHub Pages, and static website publishing</span></li>
+                <li><span class="dot"></span><span>Scientific communication, research organization, and teamwork</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-inner">
+              <h3>Download</h3>
+              <p>Open or download my CV as a PDF.</p>
+              <div class="cta-row">
+                <a class="button" href="assets/cv.pdf" target="_blank" rel="noopener noreferrer">Open CV</a>
+                <a class="button secondary" href="assets/cv.pdf" download>Download PDF</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <article class="card cv-preview" aria-label="CV PDF preview">
+          <iframe src="assets/cv.pdf" title="Dana CV PDF preview"></iframe>
         </article>
+      </div>
+    </section>
+
+    <section id="projects" class="divider-section">
+      <div class="section-head">
+        <span class="section-label">Activities &amp; Projects</span>
+        <h2 class="section-title">Selected student projects and academic activities.</h2>
+        <p class="section-intro">
+          These projects highlight how I connect academic learning with practical tools for presentation, organization, and communication.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card project-card">
+          <div class="card-inner">
+            <div class="project-number">1</div>
+            <h3>GitHub Pages Personal Website</h3>
+            <p>
+              Built a responsive static website with HTML and CSS, organized profile assets in an assets folder,
+              and published the site through GitHub Pages.
+            </p>
+            <div class="tag-row">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">GitHub Pages</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card">
+          <div class="card-inner">
+            <div class="project-number">2</div>
+            <h3>Animal Biotechnology &amp; AI Learning Portfolio</h3>
+            <p>
+              Organized an interdisciplinary learning portfolio around animal biotechnology, biological data,
+              and AI-supported analysis to connect coursework with future research interests.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Biotechnology</span>
+              <span class="tag">AI</span>
+              <span class="tag">Data Literacy</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project-card">
+          <div class="card-inner">
+            <div class="project-number">3</div>
+            <h3>CV and Profile Asset Integration</h3>
+            <p>
+              Connected a profile image and downloadable CV to a public academic website while keeping the layout simple,
+              accessible, mobile-friendly, and compatible with GitHub Pages.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Accessibility</span>
+              <span class="tag">Portfolio</span>
+              <span class="tag">Web Design</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="courses" class="divider-section">
+      <div class="section-head">
+        <span class="section-label">Planned Courses</span>
+        <h2 class="section-title">Courses I plan to take.</h2>
+        <p class="section-intro">
+          My planned coursework focuses on the intersection of life science, animal biotechnology, data analysis, and AI.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <article class="card">
+          <div class="card-inner">
+            <h3>Life Science and Biotechnology</h3>
+            <ul class="list">
+              <li><span class="dot"></span><span>Animal Biotechnology</span></li>
+              <li><span class="dot"></span><span>Molecular Biology and Genetics</span></li>
+              <li><span class="dot"></span><span>Bioinformatics and Biological Data Analysis</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <h3>Artificial Intelligence and Data</h3>
+            <ul class="list">
+              <li><span class="dot"></span><span>Introduction to Artificial Intelligence</span></li>
+              <li><span class="dot"></span><span>Machine Learning for Scientific Data</span></li>
+              <li><span class="dot"></span><span>Research Methods and Scientific Communication</span></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="divider-section">
+      <div class="section-head">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">Get in touch.</h2>
+        <p class="section-intro">
+          The best ways to reach me are email and GitHub.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <a class="contact-link" href="mailto:elle203@snu.ac.kr">
+          <span>Email</span>
+          <strong>elle203@snu.ac.kr</strong>
+        </a>
+        <a class="contact-link" href="https://github.com/Dana0203" target="_blank" rel="noopener noreferrer">
+          <span>GitHub</span>
+          <strong>github.com/Dana0203</strong>
+        </a>
+        <a class="contact-link" href="assets/cv.pdf" target="_blank" rel="noopener noreferrer">
+          <span>CV</span>
+          <strong>assets/cv.pdf</strong>
+        </a>
+      </div>
+    </section>
+
+    <section id="ai-usage" class="divider-section">
+      <div class="section-head">
+        <span class="section-label">AI Usage</span>
+        <h2 class="section-title">AI tool used for this website.</h2>
+        <p class="section-intro">
+          I used AI assistance to create and refine this static personal website while keeping it compatible with GitHub Pages.
+        </p>
+      </div>
+
+      <div class="ai-box">
+        <p><strong>Tool:</strong> ChatGPT and Replit Agent</p>
+        <p class="prompt-box">
+          <strong>Prompt used:</strong> Build a static personal website in the repo root. Use assets/profile.png as the profile image. Link assets/cv.pdf from the CV or Resume section. Keep the site simple and compatible with GitHub Pages. Do not use a backend or paid external API. Make the page responsive and accessible.
+        </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 Dana. Built with HTML/CSS and deployed on GitHub Pages.</p>
+    <p>&copy; 2026 Dana. Built for GitHub Pages.</p>
   </footer>
 </body>
 </html>
